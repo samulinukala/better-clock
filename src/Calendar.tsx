@@ -20,7 +20,7 @@ const Calendar: React.FC<CalendarProps> = ({ onDateSelect }) => {
 
   // Helper to generate days array (including padding)
   const getDaysArray = () => {
-    const days: JSX.Element[] = [];
+    const days: React.ReactNode[] = []; // Changed from JSX.Element[]
     for (let i = 0; i < firstDayOfMonth; i++) {
       days.push(<div key={`empty-${i}`} className="day empty w-10 h-10" />);
     }
@@ -38,7 +38,7 @@ const Calendar: React.FC<CalendarProps> = ({ onDateSelect }) => {
         <button
           key={day}
           className={`day w-10 h-10 flex items-center justify-center ${
-            isToday ? 'bg-blue-500 text-white' : ''
+            isToday ? 'bg-green-500 text-white' : ''
           }`}
           onClick={() => onDateSelect?.(date)}
         >

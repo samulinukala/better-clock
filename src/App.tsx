@@ -7,8 +7,8 @@ function App() {
  
   return (
    <div className="flex flex-row">
-    <Clock className="basis-auto"></Clock>
-    <Timer className="basis-auto"></Timer>
+    <Clock  />
+    <Timer  />
     <TimeDifferenceCalculator></TimeDifferenceCalculator>
    </div>
      
