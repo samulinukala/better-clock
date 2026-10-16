@@ -38,7 +38,7 @@ const Calendar: React.FC<CalendarProps> = ({ onDateSelect }) => {
         <button
           key={day}
           className={`day w-10 h-10 flex items-center justify-center ${
-            isToday ? 'bg-green-500 text-white' : ''
+            isToday ? 'bg-blue-500 text-white' : ''
           }`}
           onClick={() => onDateSelect?.(date)}
         >
