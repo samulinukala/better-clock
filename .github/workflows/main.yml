@@ -1,29 +1,8 @@
-name: Deploy Vite App to GitHub Pages
-
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"] # Change to "master" if your default branch is master
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   build-and-deploy:
     environment:
       name: github-pages
-      name_url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }} # <-- Fixed here
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -32,18 +11,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # Or your preferred Node version
+          node-version: 20
 
       - name: Vite GitHub Pages Deployer
         uses: skywarth/vite-github-pages-deployer@v1.5.0
         with:
-          # REQUIRED: Set your repository name here if hosted at username.github.io/repo-name/
-          # Example: public_base_path: "/my-repo-name/"
-          # Leave as "/" or blank if using a custom domain or user/organization root page.
           public_base_path: "/your-repo-name/"
-          
-          # Build output folder (Vite defaults to dist)
           build_path: "./dist"
-          
-          # Package manager you use (npm or yarn)
           package_manager: "npm"
