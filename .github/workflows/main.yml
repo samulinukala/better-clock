@@ -3,9 +3,11 @@ name: CI/CD Pipeline for Vite React App
 on:
   push:
     branches:
+      - main
       - master
   pull_request:
     branches:
+      - main
       - master
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
