@@ -62,7 +62,7 @@ const TimeDifferenceCalculator = () => {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '400px' }}>
+    <div className="time-difference" style={{ padding: '20px', maxWidth: '400px' }}>
       <h2>Time Difference Calculator</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>

@@ -183,3 +183,118 @@
     border-right-color: var(--border);
   }
 }
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  align-items: start;
+  gap: clamp(16px, 2.5vw, 32px);
+  width: 100%;
+  min-width: 0;
+  padding: clamp(16px, 3vw, 32px);
+  text-align: left;
+}
+
+.dashboard-panel,
+.clock,
+.timer {
+  min-width: 0;
+}
+
+.clock h1,
+.timer h1 {
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  overflow-wrap: anywhere;
+}
+
+.calendar {
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+}
+
+.calendar .weekdays,
+.calendar .days {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.calendar .weekday {
+  width: auto;
+  min-width: 0;
+  padding: 0;
+  font-size: clamp(0.7rem, 2vw, 0.875rem);
+}
+
+.calendar .day {
+  width: 100%;
+  height: auto;
+  min-height: 2rem;
+  aspect-ratio: 1;
+  padding: 0;
+}
+
+.timer form {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 24rem;
+  padding: clamp(12px, 2vw, 20px);
+  box-sizing: border-box;
+  margin-inline: auto;
+}
+
+.timer form > div {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.time-difference {
+  width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+.time-difference label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.time-difference br {
+  display: none;
+}
+
+.timer input,
+.time-difference input {
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem;
+}
+
+.dashboard button {
+  min-height: 2.75rem;
+  cursor: pointer;
+}
+
+.dashboard button:focus-visible,
+.dashboard input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .dashboard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-height: 600px) and (min-width: 641px) {
+  .dashboard {
+    gap: 16px;
+    padding-block: 16px;
+  }
+
+  .clock h1,
+  .timer h1 {
+    margin-block: 12px;
+  }
+}

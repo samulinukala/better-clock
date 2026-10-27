@@ -4,21 +4,18 @@ import Timer from './Timer'
 import TimeDifferenceCalculator from './hours'
 
 function App() {
- 
   return (
-   <div className="flex">
-    <div>
-    <Clock/>
-    </div>
-    <div>
-    <Timer/>
-    </div>
-    <div>
-    <TimeDifferenceCalculator></TimeDifferenceCalculator>
-    </div>
-   </div>
-     
-    
+    <main className="dashboard">
+      <section className="dashboard-panel">
+        <Clock />
+      </section>
+      <section className="dashboard-panel">
+        <Timer />
+      </section>
+      <section className="dashboard-panel">
+        <TimeDifferenceCalculator />
+      </section>
+    </main>
   )
 }
 
