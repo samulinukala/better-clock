@@ -2,6 +2,7 @@ import Clock from './Clock'
 import './App.css'
 import Timer from './Timer'
 import TimeDifferenceCalculator from './hours'
+import Customizer from './Customizer.tsx'
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
       </section>
       <section className="dashboard-panel">
         <TimeDifferenceCalculator />
+      </section>
+      <section className="dashboard-panel">
+      <Customizer />
       </section>
     </main>
   )
