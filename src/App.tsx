@@ -6,7 +6,7 @@ import TimeDifferenceCalculator from './hours'
 function App() {
  
   return (
-   <div className="flex flex-row">
+   <div className="flex">
     <Clock  />
     <Timer  />
     <TimeDifferenceCalculator></TimeDifferenceCalculator>
