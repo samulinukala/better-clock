@@ -186,10 +186,14 @@
 
 .dashboard {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   align-items: start;
+  align-content: start;
   gap: clamp(16px, 2.5vw, 32px);
+  flex: 1;
   width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
   min-width: 0;
   padding: clamp(16px, 3vw, 32px);
   text-align: left;
@@ -201,10 +205,17 @@
   min-width: 0;
 }
 
+.dashboard-panel {
+  width: min(100%, 22rem);
+  justify-self: center;
+  padding: 12px;
+}
+
 .clock h1,
 .timer h1 {
-  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   overflow-wrap: anywhere;
+  margin-block: 0.75rem;
 }
 
 .calendar {
@@ -237,7 +248,7 @@
   display: grid;
   gap: 0.75rem;
   width: 100%;
-  max-width: 24rem;
+  max-width: 20rem;
   padding: clamp(12px, 2vw, 20px);
   box-sizing: border-box;
   margin-inline: auto;
@@ -250,6 +261,7 @@
 
 .time-difference {
   width: 100%;
+  max-width: 22rem;
   margin-inline: auto;
   box-sizing: border-box;
 }

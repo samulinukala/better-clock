@@ -1,6 +1,13 @@
 import React from 'react';
 import Calendar from './Calendar';
-function Clock() {
+
+interface ClockProps {
+  textColor: string;
+  timeColor: string;
+  borderColor: string;
+}
+
+function Clock({ textColor, timeColor, borderColor }: ClockProps) {
   const [time, setTime] = React.useState(new Date());
 
   React.useEffect(() => {
@@ -11,9 +18,18 @@ function Clock() {
   }, []);
     return (
       <div className="clock">
-        <h1>Clock</h1>
-        <h1 className="text-4xl font-bold">{time.toLocaleTimeString()}</h1>
-         <Calendar onDateSelect={(date) => console.log('Selected date:', date)}></Calendar> 
+        <h1 style={{ color: timeColor }}>Clock</h1>
+        <h1 className="text-4xl font-bold" style={{ color: timeColor }}>
+          {time.toLocaleTimeString()}
+        </h1>
+         <Calendar
+           onDateSelect={(date) => console.log('Selected date:', date)}
+           customizations={{
+             backgroundColor: textColor,
+             headerTextColor: timeColor,
+             borderColor,
+           }}
+         />
       
         </div>
     )

@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
 
-const TimeDifferenceCalculator = () => {
+interface TimeDifferenceCalculatorProps {
+  backgroundColor: string;
+  textColor: string;
+  timeColor: string;
+  borderColor: string;
+  borderRadius: string;
+}
+
+const TimeDifferenceCalculator = ({
+  backgroundColor,
+  textColor,
+  timeColor,
+  borderColor,
+  borderRadius,
+}: TimeDifferenceCalculatorProps) => {
   const [startTime, setStartTime] = useState<string>('');
   const [endTime, setEndTime] = useState<string>('');
   const [result, setResult] = useState<number | null>(null);
@@ -62,50 +76,98 @@ const TimeDifferenceCalculator = () => {
   };
 
   return (
-    <div className="time-difference" style={{ padding: '20px', maxWidth: '400px' }}>
-      <h2>Time Difference Calculator</h2>
+    <div
+      className="time-difference"
+      style={{
+        padding: '12px',
+        maxWidth: '22rem',
+        backgroundColor,
+        color: textColor,
+        borderRadius,
+      }}
+    >
+      <h2 style={{ color: timeColor }}>Time Difference Calculator</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          border: `1px solid ${borderColor}`,
+          padding: '15px',
+          borderRadius,
+          backgroundColor,
+          color: textColor,
+        }}
+      >
+        <label style={{ display: 'block', marginBottom: '5px', color: textColor }}>
           Start Time (HH:MM):
           <input
             type="text"
             value={startTime}
             onChange={(e) => {
               let inputValue = e.target.value;
-              // Insert colon after first two digits if it doesn't exist and length is >=3
               if (inputValue.length === 2 && !inputValue.includes(':')) {
                 inputValue += ':';
               }
               setStartTime(inputValue);
             }}
             placeholder="09:30"
+            style={{
+              padding: '8px',
+              border: `1px solid ${borderColor}`,
+              borderRadius,
+              width: '100%',
+              backgroundColor,
+              color: textColor,
+            }}
           />
         </label>
         <br />
-        <label>
+        <label style={{ display: 'block', marginBottom: '5px', color: textColor }}>
           End Time (HH:MM):
           <input
             type="text"
             value={endTime}
             onChange={(e) => {
               let inputValue = e.target.value;
-              // Insert colon after first two digits if it doesn't exist and length is >=3
               if (inputValue.length === 2 && !inputValue.includes(':')) {
                 inputValue += ':';
               }
               setEndTime(inputValue);
             }}
             placeholder="17:45"
+            style={{
+              padding: '8px',
+              border: `1px solid ${borderColor}`,
+              borderRadius,
+              width: '100%',
+              backgroundColor,
+              color: textColor,
+            }}
           />
         </label>
         <br />
-        <button type="submit">Calculate Difference</button>
+        <button type="submit" style={{
+          padding: '10px 20px',
+          backgroundColor: textColor,
+          color: timeColor,
+          border: `1px solid ${borderColor}`,
+          borderRadius,
+          cursor: 'pointer'
+        }}>
+          Calculate Difference
+        </button>
       </form>
 
       {result !== null && (
-        <div style={{ marginTop: '20px' }}>
-          <p>Difference: {result.toFixed(2)} hours</p>
+        <div
+          style={{
+            marginTop: '20px',
+            padding: '15px',
+            backgroundColor,
+            borderRadius,
+          }}
+        >
+          <p style={{ color: textColor }}>Difference: {result.toFixed(2)} hours</p>
         </div>
       )}
     </div>

@@ -3,7 +3,13 @@ import {useSound} from 'react-sounds';
 
   
 
-function Timer() {
+interface TimerProps {
+  textColor: string;
+  timeColor: string;
+  borderColor: string;
+}
+
+function Timer({ textColor, timeColor, borderColor }: TimerProps) {
   // State for the remaining time in seconds
   const [remainingTime, setRemainingTime] = useState(-10000); 
   const {play}=useSound('notification/info', { loop: true });
@@ -57,12 +63,21 @@ function Timer() {
   return (
     <div className="timer">
       {/* Single time display showing remaining seconds */}
-      <h1>Timer</h1>
-      <h1 className="text-4xl font-bold">
+      <h1 style={{ color: timeColor }}>Timer</h1>
+      <h1 className="text-4xl font-bold" style={{ color: timeColor }}>
         {remainingTime > 0 ? new Date(remainingTime * 1000).toISOString().substr(11, 8) : '00:00:00'}
       </h1>
-      <button onClick={() => window.location.reload()}>reset</button>
-      <form onSubmit={handleSubmit} className=" gap-4 item-center border rounded-lg w-1/3 max-w-md mx-auto">
+      <button
+        onClick={() => window.location.reload()}
+        style={{ border: `1px solid ${borderColor}`, borderRadius: '5px' }}
+      >
+        reset
+      </button>
+      <form
+        onSubmit={handleSubmit}
+        className="gap-4 item-center border rounded-lg w-1/3 max-w-md mx-auto"
+        style={{ borderColor, borderRadius: '5px' }}
+      >
         <div className="flex-col">
             {/* Hours Input */}
             <input
@@ -72,6 +87,7 @@ function Timer() {
               onChange={(e) => handleTimeChange(setHoursInput, e.target.value)}
               min="0"
               className="p-2 border rounded w-full max-w-md mx-auto"
+              style={{ borderColor }}
             />
           
             {/* Minutes Input */}
@@ -83,6 +99,7 @@ function Timer() {
               min="0"
               max="59"
               className="p-2 border rounded w-full max-w-md mx-auto"
+              style={{ borderColor }}
             />
               {/* Seconds Input */}
             <input
@@ -93,6 +110,7 @@ function Timer() {
               min="0"
               max="59"
               className="p-2 border rounded w-full max-w-md mx-auto"
+              style={{ borderColor }}
             />
 
 
@@ -100,7 +118,18 @@ function Timer() {
           
         </div>
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Add Time</button>
+        <button
+          type="submit"
+          className="p-2 rounded"
+          style={{
+            color: timeColor,
+            backgroundColor: textColor,
+            border: `1px solid ${borderColor}`,
+            borderRadius: '5px',
+          }}
+        >
+          Add Time
+        </button>
       </form>
     </div>
   );
