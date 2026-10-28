@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 
-// State to hold current customization values
-const [customizations, setCustomizations] = useState({
-  backgroundColor: '#ffffff',
-  textColor: '#333333',
-  fontFamily: 'Arial, sans-serif',
-  borderRadius: '8px',
-});
 
+
+const Customizer: React.FC = () => {
 // Handle input changes for customization fields
 const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const { name, value } = e.target;
@@ -22,7 +17,13 @@ const handleSave = () => {
   console.log('Current customizations:', customizations);
 };
 
-const Customizer: React.FC = () => {
+// State to hold current customization values
+const [customizations, setCustomizations] = useState({
+  backgroundColor: '#ffffff',
+  textColor: '#333333',
+  fontFamily: 'Arial, sans-serif',
+  borderRadius: '8px',
+});
   return (
     <div className="customizer-panel">
       <h2>CSS Customizer</h2>
