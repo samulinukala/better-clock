@@ -6,10 +6,10 @@ import { useEffect, useState, type CSSProperties } from 'react'
 
 const customizationCookie = 'dashboard-customizations'
 const defaultCustomizations: Customizations = {
-  backgroundColor: '#ffffff',
-  textColor: '#333333',
-  timeColor: '#333333',
-  borderColor: '#cccccc',
+  backgroundColor: '#374151',
+  textColor: '#7c86ff',
+  timeColor: '#c6d2ff',
+  borderColor: '#1d293d',
   borderRadius: '5px',
 }
 
