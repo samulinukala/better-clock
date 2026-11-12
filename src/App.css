@@ -238,12 +238,19 @@
   gap: 0.5rem;
   margin-bottom: 0.75rem;
   font-size: 0.75rem;
+  line-height: 1.2;
+  zoom: 1;
+  transform: none;
 }
 
 .size-customizer__control input {
   flex: 1;
   min-width: 0;
+  height: 1rem;
+  margin: 0;
   accent-color: var(--accent);
+  zoom: 1;
+  transform: none;
 }
 
 .size-customizer__control output {

@@ -22,8 +22,8 @@ function SizeCustomizer({
   }
 
   return (
-    <div className="size-customizer" style={sizeStyle}>
-      <div className="size-customizer__control">
+    <div>
+         <div className="size-customizer__control">
         <label htmlFor={inputId}>Component size</label>
         <input
           id={inputId}
@@ -37,9 +37,12 @@ function SizeCustomizer({
         />
         <output htmlFor={inputId}>{size}%</output>
       </div>
+    <div className="size-customizer" style={sizeStyle}>
+     
           <div className="size-customizer__content">
         {children}
       </div>
+    </div>
     </div>
   )
 }
