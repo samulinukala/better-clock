@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {useSound} from 'react-sounds';
+import CollapsingDiv from './collapsingDiv';
 
   
 
@@ -73,6 +74,7 @@ function Timer({ textColor, timeColor, borderColor }: TimerProps) {
       >
         reset
       </button>
+      <CollapsingDiv title="Add Time">
       <form
         onSubmit={handleSubmit}
         className="gap-4 item-center border rounded-lg w-1/3 max-w-md mx-auto"
@@ -112,7 +114,7 @@ function Timer({ textColor, timeColor, borderColor }: TimerProps) {
               className="p-2 border rounded w-full max-w-md mx-auto"
               style={{ borderColor }}
             />
-
+            
 
 
           
@@ -131,6 +133,7 @@ function Timer({ textColor, timeColor, borderColor }: TimerProps) {
           Add Time
         </button>
       </form>
+      </CollapsingDiv>
     </div>
   );
 }

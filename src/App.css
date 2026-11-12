@@ -185,9 +185,10 @@
 }
 
 .dashboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   align-content: start;
   gap: clamp(16px, 2.5vw, 32px);
   flex: 1;
@@ -199,16 +200,98 @@
   text-align: left;
 }
 
-.dashboard-panel,
 .clock,
 .timer {
   min-width: 0;
 }
 
-.dashboard-panel {
+.dashboard > .collapsing-div,
+.dashboard > .size-customizer {
+  flex: 0 1 calc(22rem * var(--component-scale, 1));
+  width: calc(22rem * var(--component-scale, 1));
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 1079px) {
+  .dashboard > .size-customizer {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: none;
+  }
+
+  .size-customizer__content {
+    width: 100%;
+    zoom: 1;
+  }
+}
+
+.size-customizer {
+  padding: 12px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.size-customizer__control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.size-customizer__control input {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--accent);
+}
+
+.size-customizer__control output {
+  min-width: 3ch;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.size-customizer__content {
+  width: 22rem;
+  zoom: var(--component-scale, 1);
+}
+
+.customizer-panel {
+  display: grid;
+  gap: 0.75rem;
   width: min(100%, 22rem);
   justify-self: center;
-  padding: 12px;
+  padding: clamp(12px, 2vw, 20px);
+  box-sizing: border-box;
+}
+
+.customization-options {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.customization-options > div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.customization-options label {
+  font-size: 0.875rem;
+}
+
+.customization-options input[type='color'] {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.customizer-panel button {
+  min-height: 2.75rem;
+  cursor: pointer;
 }
 
 .clock h1,
@@ -216,6 +299,21 @@
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   overflow-wrap: anywhere;
   margin-block: 0.75rem;
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+
+.clock h1 {
+  margin: 0;
+  line-height: 1.2;
 }
 
 .calendar {
@@ -293,19 +391,12 @@
   outline-offset: 2px;
 }
 
-@media (max-width: 640px) {
-  .dashboard {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
 @media (max-height: 600px) and (min-width: 641px) {
   .dashboard {
     gap: 16px;
     padding-block: 16px;
   }
 
-  .clock h1,
   .timer h1 {
     margin-block: 12px;
   }
