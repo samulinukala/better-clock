@@ -308,6 +308,15 @@
   margin-block: 0.75rem;
 }
 
+.timer .timer__display {
+  width: 100%;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .clock {
   display: flex;
   flex-direction: column;

@@ -64,8 +64,8 @@ function Timer({ textColor, timeColor, borderColor }: TimerProps) {
   return (
     <div className="timer">
       {/* Single time display showing remaining seconds */}
-      <h1 style={{ color: timeColor }}>Timer</h1>
-      <h1 className="text-4xl font-bold" style={{ color: timeColor }}>
+      <h1 className="text-center text-9xl" style={{ color: timeColor }}>Timer</h1>
+      <h1 className="timer__display" style={{ color: timeColor }}>
         {remainingTime > 0 ? new Date(remainingTime * 1000).toISOString().substr(11, 8) : '00:00:00'}
       </h1>
       <button
